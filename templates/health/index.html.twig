@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Health{% endblock %}
+
+{% block body %}
+
+    <section id="health">
+        <div class="row max-height d-flex align-items-center justify-content-center">
+
+            <div class="col-4">
+                <div class="card shadow shadow-lg content">
+                    <div class="card-header bg-info text-center text-uppercase">
+                        HEALTH
+                    </div>
+                    <div class="card-body">
+                        <p>Tous va bien</p>
+                        <ul>
+                            <li>Docker ok</li>
+                            <li>WebPack encore ok</li>
+                            <li>react ok</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="card shadow shadow-lg content">
+                    <div class="card-header bg-info text-center text-uppercase">
+                       React component
+                    </div>
+                    <div class="card-body">
+                        {{ react_component('HealthReact', {'props': { "name": "super cool react props"} }) }}
+
+                        {# {{ react_component('HealthReact', {'props': { "name": "super cool react props"} , 'rendering': 'client_side' } ) }} #}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
