@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\IdGenerator\UuidV4Generator;
 use Symfony\Component\Uid\Uuid;
@@ -12,6 +13,7 @@ use Symfony\Component\Uid\Uuid;
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\Table(name="`user`")
+ * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
  */
 class User implements UserInterface
 {
@@ -59,6 +61,11 @@ class User implements UserInterface
      */
     private DateTimeImmutable $createAt;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isVerified = false;
+
     public function __construct()
     {
         $this->createAt = new DateTimeImmutable();
@@ -67,6 +74,11 @@ class User implements UserInterface
     public function getId(): ?Uuid
     {
         return $this->id;
+    }
+
+    public function getIdToString(): ?string
+    {
+        return $this->id::fromString();
     }
 
     public function getEmail(): ?string
@@ -179,5 +191,17 @@ class User implements UserInterface
     public function getCreateAt(): ?DateTimeImmutable
     {
         return $this->createAt;
+    }
+
+    public function isVerified(): bool
+    {
+        return $this->isVerified;
+    }
+
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
+
+        return $this;
     }
 }

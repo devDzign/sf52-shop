@@ -23,7 +23,13 @@
         {% endblock %}
     </head>
     <body>
+
+    {% include 'partials/header.html.twig' %}
+    <div class="main_content">
         {% block body %}
         {% endblock %}
+    </div>
+
+    {% include 'partials/footer.html.twig' %}
     </body>
 </html>
