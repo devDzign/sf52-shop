@@ -1,4 +1,4 @@
-	var $container  = $(".loadmore");
+var $container  = $(".loadmore");
 	if( $container.length > 0 ) {
 		if ($container.hasClass("masonry")){
 			$container.isotope({

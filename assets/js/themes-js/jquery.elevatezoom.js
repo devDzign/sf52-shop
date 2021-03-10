@@ -1787,4 +1787,4 @@ if ( typeof Object.create !== 'function' ) {
 			onImageSwapComplete: $.noop
 	};
 
-})( jQuery, window, document );
+})( require('jquery'), window, document );

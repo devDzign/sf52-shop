@@ -15,4 +15,12 @@ class HealthController extends AbstractController
             'controller_name' => 'HealthController',
         ]);
     }
+
+    #[Route('/boot', name: 'boot')]
+    public function boot(): Response
+    {
+        return $this->render('health/boot.html.twig', [
+
+        ]);
+    }
 }
